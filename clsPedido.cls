@@ -19,7 +19,7 @@ Private strSolicitantePedido      As String
 Private strCPFCliente             As String
 Private strSituacaoPedido         As String
 
-Dim rsPedido As ADODB.Recordset
+
 Dim rsAux As ADODB.Recordset
 
 '-------------------------------------------------------------------------------------------
@@ -77,6 +77,7 @@ End Property
 Public Function getProximoNumeroPedido() As Integer
     
     Dim strSql          As String
+    Dim rsPedido As ADODB.Recordset
     
 On Error GoTo TrataErro
 
@@ -91,13 +92,12 @@ On Error GoTo TrataErro
     If Not rsPedido.EOF Then
         getProximoNumeroPedido = rsPedido!Codigo
     End If
-    
+    Set rsPedido = Nothing
   Exit Function
 TrataErro:
        Err.Raise Err.Number, Err.Source, Err.Description
     
 End Function
-
 
 Public Sub SalvarPedido(aclsPedido As clsPedido)
     
@@ -142,6 +142,7 @@ On Error GoTo TrataErro
     End If
             
     cnnConnection.Execute strSql
+    Set rsAux = Nothing
 Exit Sub
 TrataErro:
        Err.Raise Err.Number, Err.Source, Err.Description
@@ -159,6 +160,7 @@ On Error GoTo TrataErro
     rsAux.Open strSql, cnnConnection, adOpenKeyset, adLockReadOnly
     
     Set rsComboSituacao = rsAux
+    Set rsAux = Nothing
     
     Exit Function
 TrataErro:
@@ -203,4 +205,41 @@ TrataErro:
         
 
 End Sub
+
+
+'Public Sub CancelarPedido(ByVal aCodigoPedido As Integer)
+'
+'    Dim strSql As String
+'
+'On Error GoTo TrataErro
+'
+'    strSql = "UPDATE  PEDIDO  SET SITUACAO = 3 WHERE codigo= " & aCodigoPedido
+'
+'    cnnConnection.Execute strSql
+'
+'    Exit Sub
+'TrataErro:
+'       Err.Raise Err.Number, Err.Source, Err.Description
+'
+'
+'End Sub
+'
+'Public Function rsRetornaSituacaoPedido(ByVal aCodigo As Integer) As ADODB.Recordset
+'
+'    Dim strSql As String
+'
+'On Error GoTo TrataErro
+'
+'    strSql = "Select Situacao from Pedido Where Codigo =  " & aCodigo
+'    Set rsAux = Nothing
+'    Set rsAux = New ADODB.Recordset
+'    rsAux.Open strSql, cnnConnection, adOpenKeyset, adLockReadOnly
+'
+'    Set rsRetornaSituacaoPedido = rsAux
+'
+'    Exit Function
+'TrataErro:
+'       Err.Raise Err.Number, Err.Source, Err.Description
+'
+'End Function
 

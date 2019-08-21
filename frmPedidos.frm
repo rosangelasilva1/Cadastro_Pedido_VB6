@@ -37,17 +37,17 @@ Begin VB.Form frmPedidos
       Align           =   1  'Align Top
       Height          =   660
       Left            =   0
-      TabIndex        =   23
+      TabIndex        =   22
       Top             =   0
       Width           =   13485
       _ExtentX        =   23786
       _ExtentY        =   1164
-      ButtonWidth     =   1111
+      ButtonWidth     =   1402
       ButtonHeight    =   1005
       Appearance      =   1
       _Version        =   393216
       BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-         NumButtons      =   4
+         NumButtons      =   6
          BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Caption         =   "Novo"
          EndProperty
@@ -58,6 +58,13 @@ Begin VB.Form frmPedidos
             Caption         =   "Excluir"
          EndProperty
          BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Caption         =   "Cancelar"
+         EndProperty
+         BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
+            Object.Width           =   5
+         EndProperty
+         BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
             Caption         =   "Fechar"
          EndProperty
       EndProperty
@@ -65,7 +72,7 @@ Begin VB.Form frmPedidos
    Begin VB.Frame fraValorTotal 
       Height          =   975
       Left            =   240
-      TabIndex        =   21
+      TabIndex        =   20
       Top             =   6840
       Width           =   12855
       Begin VB.TextBox txtValorTotalPedido 
@@ -83,7 +90,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   450
          Left            =   9720
-         TabIndex        =   12
+         TabIndex        =   11
          Top             =   240
          Width           =   2655
       End
@@ -101,7 +108,7 @@ Begin VB.Form frmPedidos
          ForeColor       =   &H8000000D&
          Height          =   375
          Left            =   7080
-         TabIndex        =   22
+         TabIndex        =   21
          Top             =   360
          Width           =   2655
       End
@@ -120,7 +127,7 @@ Begin VB.Form frmPedidos
       ForeColor       =   &H8000000D&
       Height          =   3615
       Left            =   240
-      TabIndex        =   18
+      TabIndex        =   17
       Top             =   3120
       Width           =   12855
       Begin VB.TextBox txtValorTotalItem 
@@ -138,7 +145,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   405
          Left            =   10320
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   2520
          Width           =   1935
       End
@@ -157,7 +164,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   405
          Left            =   8520
-         TabIndex        =   8
+         TabIndex        =   7
          Top             =   2520
          Width           =   1695
       End
@@ -176,7 +183,7 @@ Begin VB.Form frmPedidos
          Height          =   405
          Left            =   7200
          MaxLength       =   4
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   2520
          Width           =   1215
       End
@@ -194,7 +201,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   405
          Left            =   1560
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   2520
          Width           =   5535
       End
@@ -213,7 +220,7 @@ Begin VB.Form frmPedidos
          Height          =   405
          Left            =   120
          MaxLength       =   4
-         TabIndex        =   5
+         TabIndex        =   4
          Top             =   2520
          Width           =   1335
       End
@@ -230,7 +237,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   495
          Left            =   120
-         TabIndex        =   20
+         TabIndex        =   19
          ToolTipText     =   "Limpa os campos do Ítem para Inclusão de novo Ítem"
          Top             =   3000
          Width           =   1335
@@ -248,7 +255,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   495
          Left            =   11040
-         TabIndex        =   11
+         TabIndex        =   10
          ToolTipText     =   "Exclui um ítem selecionado"
          Top             =   3000
          Width           =   1215
@@ -266,7 +273,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   495
          Left            =   9720
-         TabIndex        =   10
+         TabIndex        =   9
          ToolTipText     =   "Salva Novo ítem ou Altera ìtem selecionado"
          Top             =   3000
          Width           =   1215
@@ -274,7 +281,7 @@ Begin VB.Form frmPedidos
       Begin MSHierarchicalFlexGridLib.MSHFlexGrid MSHFlexGridItens 
          Height          =   2055
          Left            =   120
-         TabIndex        =   19
+         TabIndex        =   18
          ToolTipText     =   "Dê um clique para selecionar um ítem para Alteração ou Exclusão"
          Top             =   360
          Width           =   12495
@@ -311,7 +318,7 @@ Begin VB.Form frmPedidos
       ForeColor       =   &H8000000D&
       Height          =   2295
       Left            =   240
-      TabIndex        =   13
+      TabIndex        =   12
       Top             =   720
       Width           =   12855
       Begin VB.ComboBox cboSituacao 
@@ -325,9 +332,9 @@ Begin VB.Form frmPedidos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   390
-         Left            =   7440
+         Left            =   8880
          Style           =   2  'Dropdown List
-         TabIndex        =   3
+         TabIndex        =   23
          Top             =   720
          Width           =   2775
       End
@@ -368,7 +375,7 @@ Begin VB.Form frmPedidos
          Height          =   390
          Left            =   240
          MaxLength       =   200
-         TabIndex        =   4
+         TabIndex        =   3
          Top             =   1680
          Width           =   9975
       End
@@ -390,7 +397,7 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   152829953
+         Format          =   96206849
          CurrentDate     =   43695
       End
       Begin VB.TextBox txtCodigo 
@@ -423,7 +430,7 @@ Begin VB.Form frmPedidos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   7440
+         Left            =   8880
          TabIndex        =   24
          Top             =   360
          Width           =   1095
@@ -441,7 +448,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   375
          Left            =   2400
-         TabIndex        =   17
+         TabIndex        =   16
          Top             =   360
          Width           =   735
       End
@@ -458,7 +465,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   375
          Left            =   240
-         TabIndex        =   16
+         TabIndex        =   15
          Top             =   1320
          Width           =   1335
       End
@@ -475,7 +482,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   375
          Left            =   4800
-         TabIndex        =   15
+         TabIndex        =   14
          Top             =   360
          Width           =   615
       End
@@ -492,7 +499,7 @@ Begin VB.Form frmPedidos
          EndProperty
          Height          =   375
          Left            =   240
-         TabIndex        =   14
+         TabIndex        =   13
          Top             =   360
          Width           =   975
       End
@@ -510,6 +517,8 @@ Dim clsItemPedido           As New clsItemPedido
 Dim clsItem                 As New clsItem
 Dim rsLocalizarPedido       As New ADODB.Recordset
 Dim rsLocalizarItemPedido   As New ADODB.Recordset
+'Obs.: Tive uma dúvida referente o Botão Cancelar.
+
 
 
 Private Sub ConfigurarGrid()
@@ -604,14 +613,13 @@ On Error GoTo TrataErro
          Exit Sub
     End If
     Set rsLocalizarPedido = Nothing
-    
-   
-    Set rsLocalizarPedido = Nothing
+
     
     If ValidarCamposItemPedido = False Then
        txtCodigoItem.SetFocus
        Exit Sub
     End If
+    Set rsLocalizarItem = Nothing
     Dim rsLocalizarItem As New ADODB.Recordset
    If txtCodigoItem.Text <> "" Then
         Set rsLocalizarItem = clsItemPedido.rsLocalizarItemPedido(txtCodigo.Text, txtCodigoItem.Text)
@@ -703,8 +711,12 @@ On Error GoTo TrataErro
          
         Case 3 'Excluir
          Call ExcluirPedido
+        
+        Case 4 'Cancelar Pedido
+         'Call CancelarPedido
 
-      Case 4 'Sair
+
+      Case 6 'Sair
          Unload Me
    End Select
 Exit Sub
@@ -727,7 +739,7 @@ On Error GoTo TrataErro
     'Busca Próximo número de Pedido
     intNovoNumeroPedido = clsPedido.getProximoNumeroPedido
     txtCodigo.Text = intNovoNumeroPedido
-    cboSituacao.ListIndex = 0
+    'cboSituacao.ListIndex = 0
     
 Exit Sub
     
@@ -770,6 +782,7 @@ End Sub
 Private Sub SalvarPedido()
 
     Dim strMensagem As String
+    Dim rsSituacao As ADODB.Recordset
     
 On Error GoTo TrataErro
     
@@ -777,19 +790,32 @@ On Error GoTo TrataErro
         Exit Sub
     End If
     
+    Set rsLocalizarPedido = Nothing
     Set rsLocalizarPedido = clsPedido.rsLocalizarPedido(txtCodigo.Text)
     If rsLocalizarPedido.EOF Then
         strMensagem = "Pedido cadastrado com sucesso!"
     Else
+        Set rsSituacao = Nothing
+        Set rsSituacao = clsPedido.rsRetornaSituacaoPedido(txtCodigo.Text)
+        
+        If Not rsSituacao.EOF Then
+            If rsSituacao!Situacao = 3 Then
+                Set rsSituacao = Nothing
+                Set rsLocalizarPedido = Nothing
+                MsgBox " O Pedido está cancelado, não poderá ser alterado", vbInformation, "Cadastro de Pedidos"
+                Exit Sub
+            End If
+        End If
         strMensagem = "Pedido alterado com sucesso!"
     End If
     Set rsLocalizarPedido = Nothing
-    
+    Set rsSituacao = Nothing
     
     clsPedido.CodigoPedido = txtCodigo.Text
     clsPedido.CPFCliente = mskCPF
     clsPedido.DataPedido = dtpData
-    clsPedido.SituacaoPedido = cboSituacao.ItemData(cboSituacao.ListIndex)
+    'clsPedido.SituacaoPedido = cboSituacao.ItemData(cboSituacao.ListIndex)
+    clsPedido.SituacaoPedido = 1 ' Pendente
     clsPedido.SolicitantePedido = txtSolicitante.Text
     clsPedido.SalvarPedido clsPedido
     
@@ -871,7 +897,7 @@ On Error GoTo TrataErro
             mskCPF.Text = Mid(rsLocalizarPedido!CPF, 1, 3) & "." & Mid(rsLocalizarPedido!CPF, 4, 3) & "." & Mid(rsLocalizarPedido!CPF, 7, 3) & "-" & Mid(rsLocalizarPedido!CPF, 10, 2)
         End If
         dtpData = rsLocalizarPedido!Data
-        cboSituacao.ListIndex = rsLocalizarPedido!Situacao - 1
+        'cboSituacao.ListIndex = rsLocalizarPedido!Situacao - 1
         txtSolicitante.Text = rsLocalizarPedido!Solicitante
         
         Call AtualizarValorTotalPedido
@@ -1037,13 +1063,56 @@ On Error GoTo TrataErro
         MsgBox "Pedido não cadastrado!", vbCritical, "Exclusão de Pedidos"
         Exit Sub
     End If
+    Set rsLocalizarPedido = Nothing
     
     If MsgBox("Deseja realmente excluir o Pedido e Ítens de  nº " & txtCodigo.Text & "?", vbQuestion + vbYesNo + vbDefaultButton2, "Exclusão de Pedido") = vbYes Then
-        'cnnConnection.BeginTrans ' Está comentado porque ocorre erro quando o programa executa esta instrução. Estou verificando  o motivo
-        'Deve haver esta transação para garantir que pedido e seus ítens sejam excluídos
+        If cnnConnection.State = adStateOpen Then
+            cnnConnection.BeginTrans
+        End If
+        
         Call clsItemPedido.ExcluirItemPedido(txtCodigo.Text)
         Call clsPedido.ExcluirPedido(txtCodigo.Text)
-        'cnnConnection.CommitTrans
+        
+        cnnConnection.CommitTrans
+        
+        LimparCamposPedido
+        LimparCamposItem
+        Call NovoPedido
+    End If
+    
+    Exit Sub
+TrataErro:
+    
+    MsgBox Err.Number & " -" & Err.Description, vbCritical, "ExcluirPedido"
+    cnnConnection.RollbackTrans
+    If False Then
+        Resume Next
+    End If
+End Sub
+
+Private Sub CancelarPedido()
+    
+On Error GoTo TrataErro
+    
+    If Trim(txtCodigo.Text) = "" Then
+        MsgBox "Favor digitar o código do Pedido!", vbCritical, "Exclusão de Pedidos"
+        Exit Sub
+    End If
+    
+    If Not IsNumeric(txtCodigo.Text) Then
+        MsgBox "Código do Pedido inválido!", vbCritical, "Exclusão de Pedidos"
+        Exit Sub
+    End If
+
+    Set rsLocalizarPedido = Nothing
+    Set rsLocalizarPedido = clsPedido.rsLocalizarPedido(txtCodigo.Text)
+    If rsLocalizarPedido.EOF Then
+        MsgBox "Pedido não cadastrado!", vbCritical, "Exclusão de Pedidos"
+        Exit Sub
+    End If
+    
+    If MsgBox("Deseja realmente cancelar o Pedido e Ítens de  nº " & txtCodigo.Text & "?", vbQuestion + vbYesNo + vbDefaultButton2, "Cancelar Pedido") = vbYes Then
+        Call clsPedido.CancelarPedido(txtCodigo.Text)
         LimparCamposPedido
         LimparCamposItem
         Call NovoPedido

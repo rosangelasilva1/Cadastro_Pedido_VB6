@@ -1,9 +1,9 @@
 modGeral = 104, 104, 819, 530, C
-clsItem = 130, 130, 845, 556, C
-frmPedidos = -27, 151, 863, 532, C, 182, 182, 897, 608, C
-MDIVendas = 52, 52, 767, 478, C, 208, 208, 923, 634, C
+clsItem = 130, 130, 845, 556, 
+frmPedidos = -27, 151, 863, 532, Z, 182, 182, 897, 608, C
+MDIVendas = 52, 52, 767, 478, , 208, 208, 923, 634, C
 frmGridItens = 78, 78, 875, 520, C, 0, 0, 715, 426, C
-clsPedido = 130, 130, 845, 556, C
+clsPedido = 130, 130, 845, 556, 
 frmItens = 104, 104, 901, 546, C, 208, 208, 1005, 650, C
-clsItemPedido = 130, 130, 994, 572, C
-clsCliente = 130, 130, 717, 572, C
+clsItemPedido = 130, 130, 994, 572, 
+clsCliente = 130, 130, 717, 572, 

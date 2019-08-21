@@ -89,8 +89,10 @@ On Error GoTo TrataErro
     
     'Se Pedido existe
     If Not rsAux.EOF Then
-            
-            'cnnConnection.BeginTrans
+            Set rsAux = Nothing
+            If cnnConnection.State = adStateOpen Then
+                cnnConnection.BeginTrans
+            End If
             Set rsItemPedido = Nothing
             Set rsItemPedido = rsLocalizarItemPedido(aclsItemPedido.CodigoPedido, aclsItemPedido.CodigoItem)
             If Not rsItemPedido.EOF Then
@@ -118,13 +120,14 @@ On Error GoTo TrataErro
             
             cnnConnection.Execute strSQLItem
             
-            'cnnConnection.CommitTrans
+            cnnConnection.CommitTrans
   
     End If
       Exit Sub
 TrataErro:
-       Err.Raise Err.Number, Err.Source, Err.Description
-    
+        cnnConnection.CommitTrans
+        Err.Raise Err.Number, Err.Source, Err.Description
+      
 End Sub
 
 

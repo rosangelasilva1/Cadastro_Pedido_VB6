@@ -85,4 +85,5 @@ GO
 insert into  situacaoPedido (Codigo, Descricao ) values (1,'Pendente')
 go
 insert into  situacaoPedido (Codigo, Descricao ) values (2,'Concluido')
-
+GO
+use Vendas

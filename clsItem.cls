@@ -60,6 +60,8 @@ Public Function rsLocalizarItem(ByVal acodigoItem As Integer) As ADODB.Recordset
     
     Dim strSql                      As String
     
+On Error GoTo TrataErro
+    
     strSql = "Select * from Item Where Codigo =  " & acodigoItem
     Set rsAux = Nothing
     Set rsAux = New ADODB.Recordset
@@ -67,12 +69,19 @@ Public Function rsLocalizarItem(ByVal acodigoItem As Integer) As ADODB.Recordset
     
     Set rsLocalizarItem = rsAux
     
+Exit Function
+TrataErro:
+       Err.Raise Err.Number, Err.Source, Err.Description
+     
+    
 End Function
 
 Public Function rsRetornaItens() As ADODB.Recordset
     
     Dim strSql                     As String
     Dim rsItem                     As ADODB.Recordset
+    
+On Error GoTo TrataErro
     
     strSql = "SELECT  Codigo," & vbCrLf & _
     "   Descricao," & vbCrLf & _
@@ -86,12 +95,18 @@ Public Function rsRetornaItens() As ADODB.Recordset
     
     Set rsRetornaItens = rsItem
     
+ Exit Function
+TrataErro:
+       Err.Raise Err.Number, Err.Source, Err.Description
+    
 End Function
 
 Public Function rsRetornaItensCodigo(ByVal acodigoItem As Integer) As ADODB.Recordset
     
     Dim strSql                     As String
     Dim rsItem                     As ADODB.Recordset
+    
+On Error GoTo TrataErro
     
     strSql = "SELECT  Codigo," & vbCrLf & _
     "   Descricao," & vbCrLf & _
@@ -105,6 +120,11 @@ Public Function rsRetornaItensCodigo(ByVal acodigoItem As Integer) As ADODB.Reco
     
     Set rsRetornaItensCodigo = rsItem
     
+ Exit Function
+TrataErro:
+       Err.Raise Err.Number, Err.Source, Err.Description
+            
+    
 End Function
 
 
@@ -113,6 +133,8 @@ Public Sub SalvarItem(ByVal aclsItem As clsItem)
     Dim rsItem      As ADODB.Recordset
     Dim strSQLItem  As String
     
+On Error GoTo TrataErro
+
     'Verifica se Ítem existe
     strSQLItem = "Select Codigo from Item where Codigo = " & aclsItem.CodigoItem
     Set rsAux = Nothing
@@ -120,7 +142,7 @@ Public Sub SalvarItem(ByVal aclsItem As clsItem)
     rsAux.Open strSQLItem, cnnConnection, adOpenKeyset, adLockOptimistic
     
     'Se Item  existe
-    'cnnConnection.BeginTrans
+    
     If Not rsAux.EOF Then
         strSQLItem = "UPDATE  ITEM  SET  DESCRICAO ='" & aclsItem.DescricaoItem & "',ValorUnitario=" & Replace(aclsItem.VlUnitarioItem, ",", ".") & _
         " where Codigo = " & aclsItem.CodigoItem
@@ -133,7 +155,12 @@ Public Sub SalvarItem(ByVal aclsItem As clsItem)
                 ")"
     End If
     cnnConnection.Execute strSQLItem
-    'cnnConnection.CommitTrans
+    Set rsAux = Nothing
+    
+    Exit Sub
+TrataErro:
+       Err.Raise Err.Number, Err.Source, Err.Description
+        
     
     
 End Sub
@@ -142,8 +169,14 @@ Public Sub ExcluirItem(ByVal acodigoItem As Integer)
 
     Dim strSql As String
     
+On Error GoTo TrataErro
+    
     strSql = "Delete FROM Item WHERE codigo= " & acodigoItem
     
     cnnConnection.Execute strSql
 
+Exit Sub
+TrataErro:
+       Err.Raise Err.Number, Err.Source, Err.Description
+        
 End Sub
