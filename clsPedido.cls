@@ -224,22 +224,22 @@ End Sub
 '
 'End Sub
 '
-'Public Function rsRetornaSituacaoPedido(ByVal aCodigo As Integer) As ADODB.Recordset
-'
-'    Dim strSql As String
-'
-'On Error GoTo TrataErro
-'
-'    strSql = "Select Situacao from Pedido Where Codigo =  " & aCodigo
-'    Set rsAux = Nothing
-'    Set rsAux = New ADODB.Recordset
-'    rsAux.Open strSql, cnnConnection, adOpenKeyset, adLockReadOnly
-'
-'    Set rsRetornaSituacaoPedido = rsAux
-'
-'    Exit Function
-'TrataErro:
-'       Err.Raise Err.Number, Err.Source, Err.Description
-'
-'End Function
+Public Function rsRetornaSituacaoPedido(ByVal aCodigo As Integer) As ADODB.Recordset
+
+    Dim strSql As String
+
+On Error GoTo TrataErro
+
+    strSql = "Select Situacao from Pedido Where Codigo =  " & aCodigo
+    Set rsAux = Nothing
+    Set rsAux = New ADODB.Recordset
+    rsAux.Open strSql, cnnConnection, adOpenKeyset, adLockReadOnly
+
+    Set rsRetornaSituacaoPedido = rsAux
+
+    Exit Function
+TrataErro:
+       Err.Raise Err.Number, Err.Source, Err.Description
+
+End Function
 

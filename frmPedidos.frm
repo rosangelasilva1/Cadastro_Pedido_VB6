@@ -397,7 +397,7 @@ Begin VB.Form frmPedidos
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   96206849
+         Format          =   105316353
          CurrentDate     =   43695
       End
       Begin VB.TextBox txtCodigo 
@@ -619,7 +619,7 @@ On Error GoTo TrataErro
        txtCodigoItem.SetFocus
        Exit Sub
     End If
-    Set rsLocalizarItem = Nothing
+    
     Dim rsLocalizarItem As New ADODB.Recordset
    If txtCodigoItem.Text <> "" Then
         Set rsLocalizarItem = clsItemPedido.rsLocalizarItemPedido(txtCodigo.Text, txtCodigoItem.Text)
@@ -794,6 +794,7 @@ On Error GoTo TrataErro
     Set rsLocalizarPedido = clsPedido.rsLocalizarPedido(txtCodigo.Text)
     If rsLocalizarPedido.EOF Then
         strMensagem = "Pedido cadastrado com sucesso!"
+        clsPedido.SituacaoPedido = 1 ' Pendente
     Else
         Set rsSituacao = Nothing
         Set rsSituacao = clsPedido.rsRetornaSituacaoPedido(txtCodigo.Text)
@@ -806,6 +807,7 @@ On Error GoTo TrataErro
                 Exit Sub
             End If
         End If
+        clsPedido.SituacaoPedido = cboSituacao.ItemData(cboSituacao.ListIndex)
         strMensagem = "Pedido alterado com sucesso!"
     End If
     Set rsLocalizarPedido = Nothing
@@ -814,8 +816,7 @@ On Error GoTo TrataErro
     clsPedido.CodigoPedido = txtCodigo.Text
     clsPedido.CPFCliente = mskCPF
     clsPedido.DataPedido = dtpData
-    'clsPedido.SituacaoPedido = cboSituacao.ItemData(cboSituacao.ListIndex)
-    clsPedido.SituacaoPedido = 1 ' Pendente
+    
     clsPedido.SolicitantePedido = txtSolicitante.Text
     clsPedido.SalvarPedido clsPedido
     
@@ -1112,7 +1113,7 @@ On Error GoTo TrataErro
     End If
     
     If MsgBox("Deseja realmente cancelar o Pedido e Ítens de  nº " & txtCodigo.Text & "?", vbQuestion + vbYesNo + vbDefaultButton2, "Cancelar Pedido") = vbYes Then
-        Call clsPedido.CancelarPedido(txtCodigo.Text)
+        'Call clsPedido.CancelarPedido(txtCodigo.Text)
         LimparCamposPedido
         LimparCamposItem
         Call NovoPedido
